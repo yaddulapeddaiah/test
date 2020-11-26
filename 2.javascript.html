@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://www.guvi.in/ide -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="autocompletion.css">.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #CAD6FA;    z-index: 1;}.ace_dark.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #3a674e;}.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid #abbffe;    margin-top: -1px;    background: rgba(233,233,253,0.4);    position: absolute;    z-index: 2;}.ace_dark.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid rgba(109, 150, 13, 0.8);    background: rgba(58, 103, 78, 0.62);}.ace_completion-meta {    opacity: 0.5;    margin: 0.9em;}.ace_completion-message {    color: blue;}.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #2d69c7;}.ace_dark.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #93ca12;}.ace_editor.ace_autocomplete {    width: 300px;    z-index: 200000;    border: 1px lightgray solid;    position: fixed;    box-shadow: 2px 3px 5px rgba(0,0,0,.2);    line-height: 1.4;    background: #fefefe;    color: #111;}.ace_dark.ace_editor.ace_autocomplete {    border: 1px #484747 solid;    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.51);    line-height: 1.4;    background: #25282c;    color: #c1c1c1;}
+/*# sourceURL=ace/css/autocompletion.css */</style><style>.ace_snippet-marker {    -moz-box-sizing: border-box;    box-sizing: border-box;    background: rgba(194, 193, 208, 0.09);    border: 1px dotted rgba(211, 208, 235, 0.62);    position: absolute;}</style><style id="ace-monokai">.ace-monokai .ace_gutter {background: #2F3129;color: #8F908A}.ace-monokai .ace_print-margin {width: 1px;background: #555651}.ace-monokai {background-color: #272822;color: #F8F8F2}.ace-monokai .ace_cursor {color: #F8F8F0}.ace-monokai .ace_marker-layer .ace_selection {background: #49483E}.ace-monokai.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #272822;}.ace-monokai .ace_marker-layer .ace_step {background: rgb(102, 82, 0)}.ace-monokai .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #49483E}.ace-monokai .ace_marker-layer .ace_active-line {background: #202020}.ace-monokai .ace_gutter-active-line {background-color: #272727}.ace-monokai .ace_marker-layer .ace_selected-word {border: 1px solid #49483E}.ace-monokai .ace_invisible {color: #52524d}.ace-monokai .ace_entity.ace_name.ace_tag,.ace-monokai .ace_keyword,.ace-monokai .ace_meta.ace_tag,.ace-monokai .ace_storage {color: #F92672}.ace-monokai .ace_punctuation,.ace-monokai .ace_punctuation.ace_tag {color: #fff}.ace-monokai .ace_constant.ace_character,.ace-monokai .ace_constant.ace_language,.ace-monokai .ace_constant.ace_numeric,.ace-monokai .ace_constant.ace_other {color: #AE81FF}.ace-monokai .ace_invalid {color: #F8F8F0;background-color: #F92672}.ace-monokai .ace_invalid.ace_deprecated {color: #F8F8F0;background-color: #AE81FF}.ace-monokai .ace_support.ace_constant,.ace-monokai .ace_support.ace_function {color: #66D9EF}.ace-monokai .ace_fold {background-color: #A6E22E;border-color: #F8F8F2}.ace-monokai .ace_storage.ace_type,.ace-monokai .ace_support.ace_class,.ace-monokai .ace_support.ace_type {font-style: italic;color: #66D9EF}.ace-monokai .ace_entity.ace_name.ace_function,.ace-monokai .ace_entity.ace_other,.ace-monokai .ace_entity.ace_other.ace_attribute-name,.ace-monokai .ace_variable {color: #A6E22E}.ace-monokai .ace_variable.ace_parameter {font-style: italic;color: #FD971F}.ace-monokai .ace_string {color: #E6DB74}.ace-monokai .ace_comment {color: #75715E}.ace-monokai .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-monokai */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;font-variant-ligatures: no-common-ligatures;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_hasPlaceholder .ace_hidden-cursors .ace_cursor {opacity: 0;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_error_bracket {position: absolute;border-bottom: 1px solid #DE5555;border-radius: 0;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {border: 1px solid lightgray;display: inline-block;margin: -1px 8px;padding: 0 5px;pointer-events: auto;cursor: pointer;}.ace_inline_button:hover {border-color: gray;background: rgba(200,200,200,0.2);display: inline-block;pointer-events: auto;}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_mobile-menu {position: absolute;line-height: 1.5;border-radius: 4px;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;background: white;box-shadow: 1px 3px 2px grey;border: 1px solid #dcdcdc;color: black;}.ace_dark > .ace_mobile-menu {background: #333;color: #ccc;box-shadow: 1px 3px 2px grey;border: 1px solid #444;}.ace_mobile-button {padding: 2px;cursor: pointer;overflow: hidden;}.ace_mobile-button:hover {background-color: #eee;opacity:1;}.ace_mobile-button:active {background-color: #ddd;}.ace_placeholder {font-family: arial;transform: scale(0.9);transform-origin: left;white-space: pre;opacity: 0.7;margin: 0 10px;}
+/*# sourceURL=ace/css/ace_editor.css */</style>
+
+<meta name="viewport" content="width=device-width, shrink-to-fit=no">
+<title>GUVI | IDE | Free Online Compiler with more that 20+ on demand programming languages</title>
+<meta name="description" content="Free Online Compiler to run your programs online. It support more than 20+ on demand programming languages. BASH, BASIC, C, CLOJURE, CRYSTAL, C++, C#, ELIXIR, GO, HASKELL, INSECT, JAVA, JAVA 8, JAVASCRIPT, OCAML, OCTAVE, PASCAL, PYTHON 2, PYTHON 3, RUBY, RUST are the supported programming languages">
+<meta name="keywords" content="online ide, online compiler, run code online, online debugging tool, online interpreter, free online compiler, BASH, BASIC, C, CLOJURE, CRYSTAL, C++, C#, ELIXIR, GO, HASKELL, INSECT, JAVA, JAVA 8, JAVASCRIPT, OCAML, OCTAVE, PASCAL, PYTHON 2, PYTHON 3, RUBY, RUST">
+
+<link rel="icon" href="https://www.guvi.in/images/favicon.ico" type="image/x-icon">
+<link href="./2.javascript_files/icon" rel="stylesheet">
+<link href="./2.javascript_files/css" rel="stylesheet">
+<link href="./2.javascript_files/4.css" rel="stylesheet">
+<link href="./2.javascript_files/stylev2.css" rel="stylesheet">
+<link href="./2.javascript_files/guviv2.css" rel="stylesheet">
+<link href="./2.javascript_files/ide.css" rel="stylesheet">
+<script type="text/javascript" async="" src="./2.javascript_files/recaptcha__en.js.download" crossorigin="anonymous" integrity="sha384-K2LYnZEtBUcW6O6eiKyrX5HgXfaBzWmW7BmI0mEp+JFPi3pZyyiJwjMDjI12BtQg"></script><script defer="" type="text/javascript" src="./2.javascript_files/dependency.js.download"></script>
+<script defer="" type="text/javascript" src="./2.javascript_files/steroid.js.download"></script>
+<script defer="" src="./2.javascript_files/muuri.min.js.download"></script>
+<script defer="" src="./2.javascript_files/ace.js.download" type="text/javascript"></script>
+<script defer="" src="./2.javascript_files/split.min.js.download"></script>
+<script defer="" type="text/javascript" src="./2.javascript_files/sidebar.js.download"></script>
+<style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style><style>
+        @media (min-width:768px) {
+        .sidebar-offset{
+            top: 56px !important;
+        }
+    }
+    .banner-text{font-size: 1.25rem;font-weight: 600;}.banner-text:hover {text-decoration: none !important;}
+        #notificationModal{
+            margin: 0 !important;
+            background: #000037;
+        }
+        .top-0{
+            top:0 !important;
+        }</style></head>
+<body>
+<main role="main" class="container-fluid main-body" id="ide-page">
+
+<a class="pointer" href="https://www.guvi.in/courses.html"></a><div class="row"><a class="pointer" href="https://www.guvi.in/courses.html"></a><div id="notificationModal" class="alert alert-dismissible fade show w-100 notificationBg m-0 rounded-0"><a class="pointer" href="https://www.guvi.in/courses.html">
+                <div class="d-inline-block close float-right text-dark p-2" data-dismiss="alert">
+                    <h3 class="font-weight-bold text-white pointer mr-4">×</h3>
+                </div>
+        
+                </a><div class="row justify-content-center p-0 m-0"><a class="pointer" href="https://www.guvi.in/courses.html">
+                    </a><div class="row align-items-center justify-content-center m-0"><a class="pointer" href="https://www.guvi.in/courses.html">
+                        </a><a href="https://www.guvi.in/courses.html" class="banner-text pointer text-center text-white align-items-center m-0"><span>  <img src="./2.javascript_files/candle.svg" class="pr-2"> The Great Festive Offer - Get access to any <span id="annivDiscount">premium</span> course at just <span class="text-primary">Rs. 599.</span> <img src="./2.javascript_files/fireworks.svg" alt="" class="pl-2">  </span>
+                        </a>
+                    </div>    
+                </div>
+            </div></div><header class="bg-white px-2 row">
+
+<div class="sidebar-container">
+<div id="sidebar" class="sidebar-sticky sidebar-collapse collapse in shadow-sm sidebar-offset top-0">
+<a class="navbar-brand" href="https://www.guvi.in/index.html">GUVI</a>
+<ul class="nav flex-column  main-menu">
+<li class="nav-item index-link dashboard-link">
+<a class="nav-link" href="https://www.guvi.in/dashboard.html">
+<i class="material-icons">home</i>
+<span>Home</span>
+</a>
+</li>
+<li class="nav-item courses-link">
+<a class="nav-link" href="https://www.guvi.in/courses.html">
+<i class="material-icons">video_library</i>
+<span>Courses</span>
+</a>
+</li>
+<li class="nav-item code-kata-link">
+<a class="nav-link" href="https://www.guvi.in/code-kata.html">
+<i class="icon-code-kata"></i>
+<span>Codekata</span>
+</a>
+</li><li class="nav-item webkata-link"><a class="nav-link" href="https://www.guvi.in/webkata.html"><i class="fas fa-laptop-code"></i><span>Webkata</span></a></li>
+<li class="nav-item micro-arc-link">
+<a class="nav-link" href="https://www.guvi.in/micro-arc.html">
+<i class="icon-micro-arc"></i>
+<span>Micro Arc</span>
+</a>
+</li>
+<li class="nav-item project-board-link">
+<a class="nav-link" href="https://www.guvi.in/project-board.html">
+<i class="icon-project-board"></i>
+<span>Project Board</span>
+ </a>
+</li>
+<li class="nav-item leader-board-link">
+<a class="nav-link" href="https://www.guvi.in/leader-board.html">
+<i class="icon-leader-board"></i>
+<span>Leaderboard</span>
+</a>
+</li>
+<li class="nav-item rewards-link">
+<a class="nav-link" href="https://www.guvi.in/rewards.html">
+<i class="icon-reward"></i>
+<span>Rewards</span>
+</a>
+</li>
+<li class="nav-item bookmarks-link" style="display: none;">
+<a class="nav-link" href="https://www.guvi.in/bookmarks.html">
+<i class="material-icons">bookmarks</i>
+<span>Bookmarks</span>
+</a>
+</li>
+<li class="nav-item jobs-link">
+<a class="nav-link" href="https://www.guvi.in/jobs.html">
+<i class="material-icons">work</i>
+<span>Jobs</span>
+</a>
+</li>
+<li class="nav-item ide-link active"><a class="nav-link" href="https://www.guvi.in/ide.html"><i class="material-icons">code</i><span>IDE</span></a></li><li class="nav-item faq-link"><a class="nav-link" href="https://www.guvi.in/faq.html"><i class="material-icons">help</i><span>FAQ</span></a></li><li class="nav-item jobs-link" id="forum_link"><a class="nav-link"><i class="material-icons">forum</i><span>Forum</span></a></li></ul>
+
+
+<ul class="nav flex-column code-kata-menu" id="ckMenuTabs" role="tablist">
+<li class="nav-item ck-questions-link">
+<a class="nav-link active" id="ck-questions-tab" data-toggle="tab" href="https://www.guvi.in/ide#ck-questions" role="tab" aria-controls="ck-questions" aria-selected="true">
+<i class="icon-ck-questions"></i>
+<span>Questions</span>
+</a>
+</li>
+<li class="nav-item ck-instructions-link">
+<a class="nav-link" id="ck-instructions-tab" data-toggle="tab" href="https://www.guvi.in/ide#ck-instructions" role="tab" aria-controls="ck-instructions" aria-selected="false">
+<i class="icon-ck-instructions"></i>
+<span>Instructions</span>
+</a>
+</li>
+<li class="nav-item ck-github-link">
+<a class="nav-link" id="ck-github-tab" data-toggle="tab" href="https://www.guvi.in/ide#ck-github" role="tab" aria-controls="ck-github" aria-selected="false">
+<i class="icon-ck-github"></i>
+<span>github</span>
+</a>
+</li>
+<li class="nav-item ck-peer-submission-link">
+<a class="nav-link" id="ck-peer-submission-tab" data-toggle="tab" href="https://www.guvi.in/ide#ck-peer-submission" role="tab" aria-controls="ck-peer-submission" aria-selected="false">
+ <i class="icon-ck-peer-submission"></i>
+<span>Peer submissions</span>
+</a>
+</li>
+<li class="nav-item ck-path-link">
+<a class="nav-link" id="ck-path-tab" data-toggle="tab" href="https://www.guvi.in/ide#ck-path" role="tab" aria-controls="ck-path" aria-selected="false">
+<i class="icon-ck-path"></i>
+<span>Topic path</span>
+</a>
+</li>
+</ul>
+
+</div>
+</div>
+
+<nav class="col navbar navbar-expand-md navbar-light">
+<button id="sidebarToggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+<i class="material-icons">menu</i>
+</button>
+<a class="navbar-brand visible-md" href="https://www.guvi.in/index.html">
+<img src="./2.javascript_files/guvi-logo.png" alt="GUVI : Learn to code in your native language | IDE">
+</a>
+
+<div class="list-group list-group-horizontal-md user-profile" id="accountGroup">
+<button class="btn dropdown notification-box-toggler  " data-toggle="collapse" data-target="#notification-box">
+<i class="material-icons">notifications</i>
+</button>
+<button class="btn dropdown account-box-toggler" type="button" data-toggle="collapse" data-target="#account-box" aria-expanded="false" aria-controls="account-box">
+<div class="gravatar-wrap"><img src="./2.javascript_files/33592.jpg" class="gravatar"></div>
+</button>
+<div class="accordion-group">
+
+<div class="collapse notification-box shadow-sm" id="notification-box" data-parent="#accountGroup">
+<div class="card card-body">
+<ul class="list-group">
+No notifications
+</ul>
+</div>
+</div>
+
+
+<div class="collapse account-box shadow-sm" id="account-box" data-parent="#accountGroup">
+<div class="card card-body"><div class="d-flex flex-row border-bottom mb-2"><div class="gravatar-wrap mr-2"><img src="./2.javascript_files/33592.jpg" class="gravatar"></div><div class="account-info"><p class="mb-0">peddaiah</p><p class="mb-0"><a href="https://www.guvi.in/ide#">yaddulapeddaiah158@gmail.com</a></p><p class="mb-0 highlight"><a href="https://www.guvi.in/yaddulapeddaiah15851">View profile</a></p></div></div><div class="d-flex flex-row mb-2pb-2 score-card" id="mainNavDefault" style="line-height: 2.5em;"><p class="experience"><i class="icon-geekoin" aria-hidden="true">Geekoin:</i><span>225</span></p><p class="rank" style="border-right:0;"><strong>Rank:</strong><span>N/A</span></p><p class="level" style="display:none;"><strong>Level:</strong><i class="icon-level"><span>01</span></i></p></div><!-- /ScoreCard --><ul class="list-group list-group-flush account-links-group"><li class="list-group-item account-links highlight"><strong><a href="https://www.guvi.in/change-password.html">Change Password</a></strong></li><li class="list-group-item account-links"><a href="javascript:authorize.signout();" id="signout">Sign out</a></li></ul></div>
+
+
+
+</div>
+</div>
+
+</div>
+
+
+</nav>
+</header>
+
+
+<div class="row d-flex pt-2 codeContainer">
+<div class="flex-fill flex-grow split" id="one" style="width: calc(50% - 5px);">
+<div class="d-flex align-items-end justify-content-between border-bottom">
+<ul class="nav nav-tabs m-0 flex-nowrap" id="resultTabMobile" role="tablist">
+<li class="nav-item">
+<a class="nav-link active p-1" id="editor-tab-mobile" data-toggle="tab" href="https://www.guvi.in/ide#editor-mobile" role="tab" aria-controls="editor-mobile" aria-selected="true">EDITOR</a>
+</li>
+<li class="nav-item mobile-view">
+<a class="nav-link p-1" id="input-tab-mobile" data-toggle="tab" href="https://www.guvi.in/ide#input-mobile" role="tab" aria-controls="input-mobile" aria-selected="true">I/O</a>
+</li>
+
+</ul>
+<div class="d-flex align-items-end">
+<div class="pr-3">
+<select class="form-control" id="languageSelect"><option value="bash">BASH</option><option value="basic">BASIC</option><option value="c">C</option><option value="clojure">CLOJURE</option><option value="crystal">CRYSTAL</option><option value="cpp">C++</option><option value="csharp">C#</option><option value="elixir">ELIXIR</option><option value="UNKNOWN">ERLANG</option><option value="go">GO</option><option value="haskell">HASKELL</option><option value="insect">INSECT</option><option value="java">JAVA</option><option value="java8">JAVA 8</option><option value="javascript" selected="">JAVASCRIPT</option><option value="ocaml">OCAML</option><option value="octave">OCTAVE</option><option value="pascal">PASCAL</option><option value="python">PYTHON 2</option><option value="python3">PYTHON 3</option><option value="ruby">RUBY</option><option value="rust">RUST</option></select>
+</div>
+<button class="btn d-flex align-items-end justify-content-between p-1 mr-1" id="runCode">
+<span class="material-icons text-white px-1">play_arrow</span>
+<span class="align-self-center text-white px-1">Run</span>
+</button>
+<button class="btn d-flex align-items-end justify-content-between py-1 px-2 mr-1" data-toggle="modal" data-target="#editorSettingModal">
+<span class="material-icons">settings</span>
+</button>
+</div>
+</div>
+<div class="tab-content">
+<div class="tab-pane fade show active" id="editor-mobile" role="tabpanel" aria-labelledby="editor-tab">
+<div id="editor" class=" ace_editor ace-monokai ace_dark ace_focus" style="font-size: 14px;" draggable="false"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; font-size: 1px; height: 1px; width: 1px; top: 208px; left: 76px;"></textarea><div class="ace_gutter" aria-hidden="true" style="left: 0px; width: 49px;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="height: 1e+06px; top: 0px; left: 0px; width: 49px;"><div class="ace_gutter-cell " style="height: 16px; top: 0px;">1<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 16px;">2<span class="ace_fold-widget ace_start ace_open" style="display: inline-block; height: 16px;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 32px;">3<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 48px;">4<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 64px;">5<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 80px;">6<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 96px;">7<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 112px;">8<span class="ace_fold-widget ace_start ace_open" style="display: inline-block; height: 16px;"></span></div><div class="ace_gutter-cell  ace_info" style="height: 16px; top: 128px;">9<span class="ace_fold-widget ace_start ace_open" style="display: none; height: 16px;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 144px;">10<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 160px;">11<span style="display: none;"></span></div><div class="ace_gutter-cell " style="height: 16px; top: 176px;">12<span style="display: none;"></span></div><div class="ace_gutter-active-line ace_gutter-cell " style="height: 16px; top: 192px;">13<span style="display: none;"></span></div></div></div><div class="ace_scroller" style="line-height: 16px; left: 49px; right: 0px; bottom: 0px;"><div class="ace_content" style="top: 0px; left: 0px; width: 460px; height: 416px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 620px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height: 16px; top: 192px; left: 0px; right: 0px;"></div></div><div class="ace_layer ace_text-layer" style="height: 1e+06px; margin: 0px 4px; top: 0px; left: 0px;"><div class="ace_line_group" style="height: 16px; top: 0px;"><div class="ace_line" style="height: 16px;"><span class="ace_storage ace_type">const</span> <span class="ace_identifier">readline</span> <span class="ace_keyword ace_operator">=</span> <span class="ace_identifier">require</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"readline"</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 16px; top: 16px;"><div class="ace_line" style="height: 16px;"><span class="ace_storage ace_type">const</span> <span class="ace_identifier">inp</span> <span class="ace_keyword ace_operator">=</span> <span class="ace_identifier">readline</span><span class="ace_punctuation ace_operator">.</span><span class="ace_identifier">createInterface</span><span class="ace_paren ace_lparen">({</span></div></div><div class="ace_line_group" style="height: 16px; top: 32px;"><div class="ace_line" style="height: 16px;">  <span class="ace_identifier">input</span><span class="ace_punctuation ace_operator">:</span> <span class="ace_identifier">process</span><span class="ace_punctuation ace_operator">.</span><span class="ace_identifier">stdin</span></div></div><div class="ace_line_group" style="height: 16px; top: 48px;"><div class="ace_line" style="height: 16px;"><span class="ace_paren ace_rparen">})</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 16px; top: 64px;"><div class="ace_line" style="height: 16px;"><span class="ace_storage ace_type">const</span> <span class="ace_identifier">userInput</span><span class="ace_keyword ace_operator">=</span><span class="ace_paren ace_lparen">[</span><span class="ace_paren ace_rparen">]</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 16px; top: 80px;"><div class="ace_line" style="height: 16px;"><span class="ace_identifier">inp</span><span class="ace_punctuation ace_operator">.</span><span class="ace_identifier">on</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"line"</span><span class="ace_punctuation ace_operator">,</span> <span class="ace_paren ace_lparen">(</span><span class="ace_identifier">data</span><span class="ace_paren ace_rparen">)</span> <span class="ace_storage ace_type">=&gt;</span> <span class="ace_paren ace_lparen">{</span><span class="ace_identifier">userInput</span><span class="ace_punctuation ace_operator">.</span><span class="ace_support ace_function">push</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">data</span><span class="ace_paren ace_rparen">)</span><span class="ace_punctuation ace_operator">;</span><span class="ace_paren ace_rparen">})</span><span class="ace_punctuation ace_operator">;</span></div></div><div class="ace_line_group" style="height: 16px; top: 96px;"><div class="ace_line" style="height: 16px;">  <span class="ace_identifier">inp</span><span class="ace_punctuation ace_operator">.</span><span class="ace_identifier">on</span><span class="ace_paren ace_lparen">(</span><span class="ace_string">"close"</span><span class="ace_punctuation ace_operator">,</span><span class="ace_paren ace_lparen">(</span><span class="ace_paren ace_rparen">)</span><span class="ace_storage ace_type">=&gt;</span></div></div><div class="ace_line_group" style="height: 16px; top: 112px;"><div class="ace_line" style="height: 16px;">  <span class="ace_paren ace_lparen">{</span></div></div><div class="ace_line_group" style="height: 16px; top: 128px;"><div class="ace_line" style="height: 16px;"><span class="ace_indent-guide">    </span> <span class="ace_storage ace_type">console</span><span class="ace_punctuation ace_operator">.</span><span class="ace_support ace_function ace_firebug">log</span><span class="ace_paren ace_lparen">(</span><span class="ace_identifier">userInput</span><span class="ace_paren ace_rparen">)</span></div></div><div class="ace_line_group" style="height: 16px; top: 144px;"><div class="ace_line" style="height: 16px;"><span class="ace_indent-guide">    </span> </div></div><div class="ace_line_group" style="height: 16px; top: 160px;"><div class="ace_line" style="height: 16px;"><span class="ace_indent-guide">    </span>  </div></div><div class="ace_line_group" style="height: 16px; top: 176px;"><div class="ace_line" style="height: 16px;">  </div></div><div class="ace_line_group" style="height: 16px; top: 192px;"><div class="ace_line" style="height: 16px;"><span class="ace_paren ace_rparen">})</span><span class="ace_punctuation ace_operator">;</span></div></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_animate-blinking"><div class="ace_cursor" style="display: block; top: 192px; left: 27px; width: 8px; height: 16px; animation-duration: 1000ms;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 19px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 19px; height: 384px;">&nbsp;</div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 19px; left: 49px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 19px; width: 460px;">&nbsp;</div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;">הההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההההה</div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div>
+</div>
+<div class="tab-pane fade p-2" id="input-mobile" role="tabpanel" aria-labelledby="input-tab-mobile">
+<div class="d-flex flex-fill flex-grow flex-column">
+<div class="mt-2">
+<h6 class="font-weight-bold">INPUT</h6>
+<textarea id="inputValue-mobile" class="form-control limit-fix" rows="5" placeholder="Your Input Here"></textarea>
+</div>
+<div id="output-mobile" class="mt-2">
+<div class="outputValue outputBox mt-2"><h5>Output: </h5><div><pre>[ '1' ]
+</pre><h5>Execution Time:</h5><pre>0.075s</pre><h5>Memory Used: </h5><pre>8332kb</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="gutter gutter-horizontal" style="width: 10px;"></div><div class="flex-fill flex-grow desktop-view split" id="two" style="width: calc(50% - 5px);">
+<ul class="nav nav-tabs ml-1" id="resultTab" role="tablist">
+<li class="nav-item">
+<a class="nav-link p-2" id="input-tab" data-toggle="tab" href="https://www.guvi.in/ide#input" role="tab" aria-controls="input" aria-selected="false">INPUT</a>
+</li>
+<li class="nav-item">
+<a class="nav-link p-2 active" id="output-tab" data-toggle="tab" href="https://www.guvi.in/ide#output" role="tab" aria-controls="output" aria-selected="true">OUTPUT</a>
+</li>
+</ul>
+<div class="tab-content p-1">
+<div class="tab-pane fade p-2" id="input" role="tabpanel" aria-labelledby="input-tab">
+<textarea id="inputValue" class="form-control limit-fix" rows="5" placeholder="Your Input Here"></textarea>
+</div>
+<div class="tab-pane fade p-2 active show" role="tabpanel" id="output" aria-labelledby="output-tab">
+<div class="outputValue outputBox"><h5>Output: </h5><div><pre>[ '1' ]
+</pre><h5>Execution Time:</h5><pre>0.075s</pre><h5>Memory Used: </h5><pre>8332kb</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="spinner spinner-border text-dark" role="status" style="display: none;">
+<span class="sr-only">Loading...</span>
+</div>
+<div class="modal fade" id="reloadModal" tabindex="-1" role="dialog" aria-labelledby="reloadModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="reloadModalLabel">INACTIVITY</h5>
+</div>
+<div class="modal-body">
+<p>Page Expired due to inactivity. Please reload the page to continue.</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-primary" id="reloadPage">Reload</button>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="editorSettingModal" tabindex="-1" role="dialog" aria-labelledby="editorSettingModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-slideout" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="editorSettingModalLabel">Editor Settings</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">
+<h6 class="font-weight-bold p-2">Font Size</h6>
+<div class="d-flex align-items-center justify-content-between p-2">
+<input id="editor-font-size" type="range" name="fontSize" class="custom-range" min="10" max="40" value="14" step="1">
+</div>
+<h6 class="font-weight-bold p-2">Theme</h6>
+<div class="form-group d-flex justify-content-around p-2" id="themeControl">
+<div class="custom-control custom-radio custom-control-inline">
+<input id="lightTheme" type="radio" name="theme" value="chrome" class="custom-control-input">
+<label for="lightTheme" class="custom-control-label">Light</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input id="darkTheme" type="radio" name="theme" value="monokai" class="custom-control-input" checked="">
+<label for="darkTheme" class="custom-control-label">Dark</label>
+</div>
+<div class="custom-control custom-radio custom-control-inline">
+<input id="twilightTheme" type="radio" name="theme" value="twilight" class="custom-control-input">
+<label for="twilightTheme" class="custom-control-label">Twilight</label>
+</div>
+</div>
+<div class="d-flex justify-content-between p-3">
+<h6 class="col pl-0 font-weight-bold">IntelliSense</h6>
+<div class="d-flex col justify-content-start">
+<label class="switch">
+<input type="checkbox" id="autoCompletion" checked="">
+<span class="slider round"></span>
+</label>
+</div>
+</div>
+<div class="d-flex justify-content-between p-3">
+<h6 class="col pl-0 font-weight-bold">Code Wrap</h6>
+<div class="d-flex col justify-content-start">
+<label class="switch">
+<input type="checkbox" id="codeWrap" checked="">
+<span class="slider round"></span>
+</label>
+</div>
+</div>
+<div class="d-flex justify-content-between p-3">
+<h6 class="col pl-0 font-weight-bold">Show Gutter</h6>
+<div class="d-flex col justify-content-start">
+<label class="switch">
+<input type="checkbox" id="showGutter" checked="">
+<span class="slider round"></span>
+</label>
+</div>
+</div>
+<div class="d-flex justify-content-between p-3">
+<h6 class="col pl-0 font-weight-bold">Line Numbers</h6>
+<div class="d-flex col justify-content-start">
+<label class="switch">
+<input type="checkbox" id="lineNumber" checked="">
+<span class="slider round"></span>
+</label>
+</div>
+</div>
+<div class="d-flex justify-content-between align-items-center p-3">
+<h6 class="col pl-0 font-weight-bold">Insert Code Template</h6>
+<div class="d-flex col justify-content-start">
+<button class="btn btn-primary" id="insertTemplate">Insert</button>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<div class="d-flex justify-content-between align-items-center ">
+<a class="align-items-center justify-content-around d-flex share-link" href="https://www.guvi.in/ide#">
+
+<i class="fas fa-share-alt px-2"></i>
+<span>Share it with friends</span>
+</a>
+<a href="https://www.guvi.in/ide#" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="
+                      &lt;h6&gt;GUVI {IDE}&lt;/h6&gt;
+                      &lt;p&gt;Free online compiler to compile and run your programs online. It offers support for 20+ on demand programming languages&lt;/p&gt;">
+<span class="material-icons">info</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="switchTemplatePrompt">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header border-0 d-flex justify-content-center">
+<h5 class="modal-title">Keep the Code Changes?</h5>
+</div>
+<div class="modal-footer d-flex justify-content-around border-0">
+<button type="button" class="btn btn-secondary text-white px-5" id="dontKeepChanges">No</button>
+<button type="button" class="btn btn-primary px-5" id="keepChanges">Yes</button>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" defer="" src="./2.javascript_files/ide.js.download"></script>
+<script src="./2.javascript_files/api.js.download" defer=""></script>
+<script defer="">
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-53114947-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+<script defer="" src="./2.javascript_files/analytics.js.download"></script>
+
+
+<script>window.onscroll = function(){
+            if(window.pageYOffset > document.querySelector("#sidebar").offsetTop){
+                document.querySelector("#sidebar").classList.add("top-0");
+            }else{
+                document.querySelector("#sidebar").classList.remove("top-0");
+            }
+        }
+        $("#notificationModal").on("close.bs.alert", function(){
+            document.querySelector("#sidebar").classList.remove("sidebar-offset");
+        });
+        </script><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; position: fixed; visibility: hidden; display: block; transition: right 0.3s ease 0s; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="./2.javascript_files/anchor.html" width="256" height="60" role="presentation" name="a-y698txyqnvmu" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./2.javascript_files/saved_resource.html"></iframe></div></body></html>
